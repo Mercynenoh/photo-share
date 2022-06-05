@@ -1,0 +1,28 @@
+{%extends 'pictures/base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if posts %}
+      <h2>Found {{ posts|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if posts %}
+    {% for post in posts %}
+      <div class="col-sm-6 col-md-3 my-3 m-4">
+        <!-- <img src="{{post.profile.pic.url}}" src="" height="100px" width="100px"style="border-radius: 50px; justify-items: center;" > -->
+        <img src="{{post.image.url}}" src="" height="300px" width="300px"style="border-radius: 8px; justify-items: center;" >
+        <p>{{post.description}}<br>{{post.caption}}<br><em >{{post.created}}</em><br><em>{{post.location}}</em></p>
+        
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

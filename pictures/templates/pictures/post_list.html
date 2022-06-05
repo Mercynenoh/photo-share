@@ -1,0 +1,60 @@
+{%extends 'pictures/base.html'%}
+{% block extra_js%}
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="top mt-4">
+        <div
+  class="bg-image"
+  style="
+    background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/011.webp');
+    height: 200px;
+  "
+>
+
+<a href="{% url 'new' %}" class="btn btn-light mt-4 new">
+    New post
+</a>
+</div>
+        
+    </div> 
+    <div class="row">
+        <div class="col-md-3">
+            
+           
+        </div>
+        <div class="col-md-9">
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            </div><!-- /.modal -->
+
+        </div>
+    </div>
+</div>
+
+
+            <div class="row two m-4">
+                {% for post in object_list %}
+                 <img src="{{ post.profile.pic.url }}" height="100px" width="100px" style="border-radius:50%; float: left; margin-left: 95px;" class="">
+                 <p class="card-text "><em>{{user.username}} <br>{{post.profile}}<br>{{post.location}}</em></p> 
+                 
+                {% endfor %} 
+                {% for image in object_list %}
+                <div class="col-md-4 my-4 " >    
+                    <div class="">
+                     
+                        <a
+                            class="open-image"
+                            href="{% url 'image' image.id %}"
+                            data-popup-url="{% url 'image' image.id %}}"
+                            ><img src="{{ image.image.url }}" height="300px" width="300px" style="border-radius:5%;"></a>
+                         
+                      </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% include "pictures/image-modal.html" %}
+{% endblock %} --> -->

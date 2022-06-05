@@ -1,0 +1,57 @@
+{%extends 'pictures/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+  <!-- <div class="col"> 
+    <a class="btn btn-dark my-3 ml-auto" href="/">Go Back</a>
+</div> -->
+<div class="view">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ post.profile.pic.url }}" height="100px" width="100px" class="ml-4" style="border-radius:50%; float: left;" class="m-3">
+            <p class="card-text ">{{post.author.username}} <br>{{post.profile}}<br>{{post.location}}</p>
+            <form action="/followers_count/" method="POST" enctype="multipart/form-data">
+                {% csrf_token%}
+                <input type="hidden" name="user" value="{{current.user}}" readonly/>
+                <input type="hidden" name="follower" value="{{user.username}}" readonly/>
+                <input type="hidden" name="value" value="follow" readonly/>
+                <button class="btn btn-dark profile-edit-btn-dark" type="submit" >
+                   Follow
+                </button>
+            </form>
+            <img class="image-thumbnail ml-4 mt-4" src="{{post.image.url}}" alt="Card image cap" width="400px" height="400px" style="border-radius: 8px;">
+            <p style="padding-left: 20px;">{{post.description}}<br>{{post.caption}}<br><em>{{post.created}}</em><br/>{{post.location}}</em>  <br> <a href="{{post.image.url}}">{{post.image.url}}</a></p>  
+         
+        </div>
+        <div class="col-md-6 mt-5">
+            
+            <form method="POST" action="{%url 'new' %}">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Comment</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="comment" enctype="multipart/form-data">
+                </div>
+                <button type="submit" class="btn btn-secondary">Submit</button>
+              </form>
+              <h3>Comments:</h3>
+        <p>{{post.author}}: {{post.comments}}</p>
+        </div>
+        </div>
+        
+    </div>
+    <!-- <p class="card-text">{{post.author.username}}</p> -->
+    
+    
+</div>
+
+
+<!-- <button type="button" onclick="getURL();" class="copy-btn"><a href="{{post.image.url}}">{{post.image.url}}</a></button> -->
+
+
+
+ </div>
+
+ {% endblock %}

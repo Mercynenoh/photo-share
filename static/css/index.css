@@ -1,0 +1,47 @@
+body{
+  background-color: antiquewhite;
+}
+h1{
+    color: royalblue;
+}
+h2{
+  text-align: center;
+}
+
+  .two:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .two {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap : 1rem
+  }
+
+  .display{
+    width: 300px;
+    height: 450px;
+    
+  }
+  .my-4{
+    margin-left: 100px;
+  }
+  .sidebar{
+      margin-left: 50px;
+  }
+  img{
+      max-width: 300px;
+      max-height: 300px;
+  }
+h2{
+  font-weight: 800;
+}
+
+.top{
+  background-color: grey;
+  height: 30vh;
+}
+.new{
+margin-left: 70px;
+}
+  
