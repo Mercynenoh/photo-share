@@ -1,5 +1,5 @@
 body{
-  background-color: antiquewhite;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(83, 157, 163));
 }
 h1{
     color: royalblue;
@@ -44,4 +44,8 @@ h2{
 .new{
 margin-left: 70px;
 }
+strong{
+  color: red;
+}
+
   

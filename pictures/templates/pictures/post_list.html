@@ -3,7 +3,7 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class="container-fluid">
     <div class="top mt-4">
         <div
   class="bg-image"
@@ -12,9 +12,11 @@
     height: 200px;
   "
 >
+<a class="m-4 btn btn-info" href="/accounts/register/">Sign Up</a>
+
 
 <a href="{% url 'new' %}" class="btn btn-light mt-4 new">
-    New post
+     Create New post
 </a>
 </div>
         
@@ -34,20 +36,22 @@
 
 
             <div class="row two m-4">
-                {% for post in object_list %}
+                <!-- {% for post in object_list %}
                  <img src="{{ post.profile.pic.url }}" height="100px" width="100px" style="border-radius:50%; float: left; margin-left: 95px;" class="">
-                 <p class="card-text "><em>{{user.username}} <br>{{post.profile}}<br>{{post.location}}</em></p> 
+                 <p class="card-text "><em>{{post.author.username}} <br>{{post.profile}}<br>{{post.location}}</em></p> 
                  
-                {% endfor %} 
+                {% endfor %}  -->
                 {% for image in object_list %}
                 <div class="col-md-4 my-4 " >    
                     <div class="">
+                        <img src="{{ image.profile.pic.url }}" height="100px" width="100px" style="border-radius:50%; float: left; margin-left: 95px;" class="">
                      
                         <a
                             class="open-image"
                             href="{% url 'image' image.id %}"
                             data-popup-url="{% url 'image' image.id %}}"
-                            ><img src="{{ image.image.url }}" height="300px" width="300px" style="border-radius:5%;"></a>
+                            ><img class="mt-4" src="{{ image.image.url }}" height="300px" width="300px" style="border-radius:5%;"></a>
+                            <p>{{image.caption}}</p>
                          
                       </div>
                 </div>

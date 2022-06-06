@@ -57,9 +57,7 @@ def followers_count(request):
 #         return render(request, "image.html", {'post':post})
 
 
-class ImageList(LoginRequiredMixin, ListView):
-    login_url = '/accounts/register'
-    redirect_field_name = '/accounts/login'
+class ImageList(ListView):
     model = Post
     template_name = 'pictures/post_list.html'
 
@@ -89,7 +87,9 @@ def gallery(request):
     return render(request, 'pictures/post_list.html', context)
 
 
-class ImageCreate(CreateView):
+class ImageCreate(LoginRequiredMixin, CreateView):
+    login_url = '/accounts/login'
+    # redirect_field_name = '/accounts/login'
     model = Post
     fields = ['image', 'imagename', 'caption', 'author', 'profile', 'location', 'comments']
     success_url = '/'
