@@ -57,7 +57,7 @@ def followers_count(request):
 #         return render(request, "image.html", {'post':post})
 
 
-class ImageList(ListView):
+class ImageList(LoginRequiredMixin,ListView):
     model = Post
     template_name = 'pictures/post_list.html'
 
